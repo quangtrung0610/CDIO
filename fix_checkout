@@ -91,19 +91,19 @@
 </br>
 <?php
 	require_once("connect.php");
-$sql="select * from product order by Pro_ID";
-$query = mysql_query($sql);
-if(mysql_num_rows($query)>0)
-{
-  while($row = mysql_fetch_array($query))
-  {
-    echo "<div class='pro'>";
-    echo "<h3>$row[Pro_Name]</h3>";
-    echo "Price:".number_format($row[Price],3)." USD<br />";
-    echo "<p><a href='checkout.php?item=$row[Pro_ID]'>Mua Sach</a></p>";
-    echo "</div>";
-  }
-}
+     $sql="select * from product order by Pro_ID";
+     $query = mysqli_query($conn, $sql);
+     if(mysqli_num_rows($query)>0)
+     {
+     while($row = mysqli_fetch_array($query))
+     {
+     echo "<div class='pro'>";
+     echo "<h3>$row[Pro_Name]</h3>";
+     echo "Price:".number_format($row['Price'],3)." USD<br />";
+     echo "<p><a href='checkout.php?item=$row[Pro_ID]'>Mua Sach</a></p>";
+     echo "</div>";
+     }
+     }
 ?>
      
 </br>
