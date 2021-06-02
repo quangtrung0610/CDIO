@@ -11,7 +11,7 @@
 
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
-    <title>CDIO</title>
+    <title></title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -39,7 +39,7 @@
     <header class="">
       <nav class="navbar navbar-expand-lg">
         <div class="container">
-          <a class="navbar-brand" href="index.php"><h2>Online Store <em>Website</em></h2></a>
+          <a class="navbar-brand" href="index.php"><h2>SYSTEM FOR SELLING CLOTHERS ONLINE <em> Website</em></h2></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -74,7 +74,7 @@
     </header>
 
     <!-- Page Content -->
-    <div class="page-heading about-heading header-text" style="background-image: url(assets/images/heading-1-1920x500.jpg);">
+    <div class="page-heading about-heading header-text" style="background-image: url(assets/images/background.jpg);">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
@@ -93,18 +93,18 @@
         <div class="row">
           <div class="col-md-12">
             <div class="section-heading">
-              <h2>Lorem ipsum dolor sit amet consectetur adipisicing</h2>
+              <h2>SYSTEM FOR SELLING CLOTHERS ONLINE</h2>
             </div>
           </div>
           <div class="col-md-6">
             <div class="right-image">
-              <img src="assets/images/about-1-570x350.jpg" alt="">
+              <img src="assets/images/2.jpg" alt="">
             </div>
           </div>
           <div class="col-md-6">
             <div class="left-content">
-              <h4>Lorem ipsum dolor sit amet.</h4>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed voluptate nihil eum consectetur similique? Consectetur, quod, incidunt, harum nisi dolores delectus reprehenderit voluptatem perferendis dicta dolorem non blanditiis ex fugiat. Lorem ipsum dolor sit amet, consectetur adipisicing elit.<br><br>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et, consequuntur, modi mollitia corporis ipsa voluptate corrupti eum ratione ex ea praesentium quibusdam? Aut, in eum facere corrupti necessitatibus perspiciatis quis.</p>
+              <h4>SYSTEM FOR SELLING CLOTHERS ONLINE</h4>
+              <p>Listening to the wishes of women, #SIXDO was born based on the fact that many people wanted to wear designer Do Manh Cuong's clothes but were not qualified. With a mid-range price, we hope #SIXDO is the bridge to bring the spirit of Do Manh Cuong to all Vietnamese women in a closer but still elegant, minimalistic and luxurious way. All products are produced from the heart of designer Do Manh Cuong with the original design philosophy "Put quality and women's habits first". We think of every hammock, arm lift, every woman's concern to place in the spirit and quality of the fabric and design. Ambition with #SIXDO does not stop at design, we aim at a nationwide customer base, bringing beauty and humane social values ​​to women of all ages. With a group of young customers, #SIXDO carries a youthful, modern and urban charm. With a group of middle-aged customers, #SIXDO will make you satisfied with its elegant and noble features. No matter who you are, at any age, the spirit of #SIXDO will always evoke minimalism, elegance and elegance in you,</p>
               <ul class="social-icons">
                 <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                 <li><a href="#"><i class="fa fa-twitter"></i></a></li>
@@ -123,14 +123,14 @@
         <div class="row">
           <div class="col-md-12">
             <div class="section-heading">
-              <h2>Lorem ipsum dolor sit amet.</h2>
+              <h2>SYSTEM FOR SELLING CLOTHERS ONLINE.</h2>
             </div>
 
-            <h5>Lorem ipsum dolor sit amet.</h5>
+            <h5>SYSTEM FOR SELLING CLOTHERS ONLINE</h5>
 
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed voluptate nihil eum consectetur similique? Consectetur, quod, incidunt, harum nisi dolores delectus reprehenderit voluptatem perferendis dicta dolorem non blanditiis ex fugiat. Lorem ipsum dolor sit amet, consectetur adipisicing elit.<br><br>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et, consequuntur, modi mollitia corporis ipsa voluptate corrupti eum ratione ex ea praesentium quibusdam? Aut, in eum facere corrupti necessitatibus perspiciatis quis.</p>
+            <p>Listening to the wishes of women, #SIXDO was born based on the fact that many people wanted to wear designer Do Manh Cuong's clothes but were not qualified. With a mid-range price, we hope #SIXDO is the bridge to bring the spirit of Do Manh Cuong to all Vietnamese women in a closer but still elegant, minimalistic and luxurious way. All products are produced from the heart of designer Do Manh Cuong with the original design philosophy "Put quality and women's habits first". We think of every hammock, arm lift, every woman's concern to place in the spirit and quality of the fabric and design. Ambition with #SIXDO does not stop at design, we aim at a nationwide customer base, bringing beauty and humane social values ​​to women of all ages. With a group of young customers, #SIXDO carries a youthful, modern and urban charm. With a group of middle-aged customers, #SIXDO will make you satisfied with its elegant and noble features. No matter who you are, at any age, the spirit of #SIXDO will always evoke minimalism, elegance and elegance in you,</p>
 
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo quae eveniet tempora reprehenderit quo, necessitatibus vel sit laboriosam, sunt obcaecati quisquam explicabo voluptatibus earum facilis quidem fuga maiores. Quasi, obcaecati? <br><br> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi, est officiis. Ipsam quas consequuntur adipisci quis, fuga pariatur eius eveniet qui similique nulla inventore accusantium, suscipit asperiores quibusdam culpa iure!</p>
+            <p>Balancing mid-range prices while ensuring optimal quality is a problem that Do Manh Cuong still aspires to realize. #SIXDO is that reality, oriented to be a brand of national stature, on par with chain brands in the world in the Vietnamese market.</p>
           </div>
         </div>
       </div>
@@ -141,7 +141,7 @@
         <div class="row">
           <div class="col-md-12">
             <div class="inner-content">
-              <p>Copyright © 2020 Company Name - Template by: <a href="https://www.phpjabbers.com/">PHPJabbers.com</a></p>
+              <p>Copyright © 2021 Company Name - Template by: <a href="https://www.phpjabbers.com/">PHPJabbers.com</a></p>
             </div>
           </div>
         </div>
