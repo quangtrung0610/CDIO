@@ -1,4 +1,9 @@
+<?php
+session_start();
+
+?>
 <!DOCTYPE html>
+
 <html lang="en">
 
   <head>
@@ -100,87 +105,19 @@
      echo "<div class='pro'>";
      echo "<h3>$row[Pro_Name]</h3>";
      echo "Price:".number_format($row['Price'],3)." USD<br />";
-     echo "<p><a href='checkout.php?item=$row[Pro_ID]'>Mua Sach</a></p>";
+     echo "<p><a href='addcart.php?item=$row[Pro_ID]'> Mua Sach</a></p>";
      echo "</div>";
      }
      }
 ?>
-     
+<?php if (isset($_SESSION['success'])) :?>
+<p class="text-danger"><?= $_SESSION['success'] ?></p>
+<?php endif ; unset($_SESSION['success']); ?>
 </br>
-            <div class="row">
-                <div class="col col-md-12">
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>IMG</th>
-                                <th>Name</th>
-                                <th>Amount</th>
-                                <th>Price</th>
-                                <th>Total</th>
-                                <th>Size</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody id="datarow">
-                            <tr>
-                                <td>1</td>
-                                <td>
-                                    <img src="../assets/img/product/ipad4.png" class="hinhdaidien">
-                                </td>
-                                <td>Sport</td>
-                                <td class="text-right">2</td>
-                                <td class="text-right">A</td>
-                                <td class="text-right">11,800,000.00</td>
-                                <td class="text-right">23,600,000</td>
-                                
-                                <td>
-                                    <!-- Nút xóa, bấm vào sẽ xóa thông tin dựa vào khóa chính `sp_ma` -->
-                                    <a id="delete_1" data-sp-ma="2" class="btn btn-danger btn-delete-sanpham">
-                                        <i class="fa fa-trash" aria-hidden="true"></i> Xóa
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>
-                                    <img src="../assets/img/product/nokia-asha-311.jpg" class="hinhdaidien">
-                                </td>
-                                <td>Alaba</td>
-                                <td class="text-right">4</td>
-                                <td class="text-right">B</td>
-                                <td class="text-right">2,699,000.00</td>
-                                <td class="text-right">1,0796,000</td>
-                                
-                                <td>
-                                    <!-- Nút xóa, bấm vào sẽ xóa thông tin dựa vào khóa chính `sp_ma` -->
-                                    <a id="delete_2" data-sp-ma="6" class="btn btn-danger btn-delete-sanpham">
-                                        <i class="fa fa-trash" aria-hidden="true"></i> Xóa
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>
-                                    <img src="../assets/img/product/iphone5-white.jpeg" class="hinhdaidien">
-                                </td>
-                                <td>Gucchi</td>
-                                <td class="text-right">8</td>
-                                <td class="text-right">C</td>
-                                <td class="text-right">1,4990,000.00</td>
-                                <td class="text-right">119,920,000</td>
-                                
-                                
-                                <td>
-                                    <!-- Nút xóa, bấm vào sẽ xóa thông tin dựa vào khóa chính `sp_ma` -->
-                                    <a id="delete_3" data-sp-ma="4" class="btn btn-danger btn-delete-sanpham">
-                                        <i class="fa fa-trash" aria-hidden="true"></i> Xóa
-                                    </a>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-               <!--test-->
+<a href="listcart.php">List Cart</a>
+ 
+</br>
+
                
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal"><a href="index.php">Cancel</a></button>
