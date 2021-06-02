@@ -102,18 +102,6 @@
                 </div>
                 <br>
               </div>
-              <div class="col-sm-4 col-xs-6">
-                <div>
-                  <img src="assets/images/product-2-370x270.jpg" alt="" class="img-fluid">
-                </div>
-                <br>
-              </div>
-              <div class="col-sm-4 col-xs-6">
-                <div>
-                  <img src="assets/images/product-3-370x270.jpg" alt="" class="img-fluid">
-                </div>
-                <br>
-              </div>
             </div>
           </div>
 
@@ -187,17 +175,9 @@
             </div>
           </div>
 
-    <footer>
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="inner-content">
-              <p>Copyright © 2020 Company Name - Template by: <a href="https://www.phpjabbers.com/">PHPJabbers.com</a></p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </footer>
+    <?php
+      require_once('footer.php');
+    ?>
 
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>

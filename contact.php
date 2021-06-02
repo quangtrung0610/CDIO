@@ -10,7 +10,7 @@
     <link rel="icon" href="assets/images/favicon.ico">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
-    <title>PHPJabbers.com | Free Online Store Website Template</title>
+    <title>CDIO</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -38,7 +38,7 @@
     <header class="">
       <nav class="navbar navbar-expand-lg">
         <div class="container">
-          <a class="navbar-brand" href="index.php"><h2>SYSTEM FOR SELLING CLOTHERS ONLINE <em> Website</em></h2></a>
+          <a class="navbar-brand" href="index.php"><h2>Online Store <em>Website</em></h2></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -73,12 +73,12 @@
     </header>
 
     <!-- Page Content -->
-    <div class="page-heading contact-heading header-text" style="background-image: url(assets/images/CONTACT.png);">
+    <div class="page-heading contact-heading header-text" style="background-image: url(assets/images/heading-4-1920x500.jpg);">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
             <div class="text-content">
-              <h4>SYSTEM FOR SELLING CLOTHERS ONLINE</h4>
+              <h4>Lorem ipsum dolor</h4>
               <h2>Contact Us</h2>
             </div>
           </div>
@@ -109,11 +109,7 @@
           <div class="col-md-4">
             <div class="left-content">
               <h4>About our office</h4>
-              <p>Not just an ordinary loyalty program, SIXCLUB is a club that brings members to experiences of elegant and luxurious lifestyle to spread positive values ​​to customers. 
-For the first time in Vietnam, there is a brand that puts both experiential activities and reward points accumulation into a loyalty program.
-SIXCLUB is a digital ecosystem built with the goal of becoming a reliable and convenient consumer assistant for SIXDO member customers.<br><br>Besides, the e-wallet feature integrated right on the application, linking the 36 banks system makes it easy for users to shop and pay quickly, safely and conveniently.
-If #SIXDO is a way of life, SIXCLUB is the quintessence of that lifestyle. Not everyone can become a member of SIXCLUB, we are thoughtful in choosing the requirements as well as thinking about the incentives that customers can receive when joining SIXCLUB. 
-SIXCLUB wishes to spread the lifestyle through activities and experiences designed specifically for each member, so that women can love themselves more and join hands with #SIXDO to create community values.</p>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisic elit. Sed voluptate nihil eumester consectetur similiqu consectetur.<br><br>Lorem ipsum dolor sit amet, consectetur adipisic elit. Et, consequuntur, modi mollitia corporis ipsa voluptate corrupti.</p>
               <ul class="social-icons">
                 <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                 <li><a href="#"><i class="fa fa-twitter"></i></a></li>
@@ -169,25 +165,17 @@ SIXCLUB wishes to spread the lifestyle through activities and experiences design
             </div>
           </div>
           <div class="col-md-4">
-            <img src="assets/images/1.jpg" class="img-fluid" alt="">
+            <img src="assets/images/team_01.jpg" class="img-fluid" alt="">
 
-            <h5 class="text-center" style="margin-top: 15px;">Team</h5>
+            <h5 class="text-center" style="margin-top: 15px;">John Doe</h5>
           </div>
         </div>
       </div>
     </div>
 
-    <footer>
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="inner-content">
-              <p>Copyright © 2021 Company Name - Template by: <a href="https://www.phpjabbers.com/">PHPJabbers.com</a></p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </footer>
+    <?php
+      require_once('footer.php');
+    ?>
 
 
     <!-- Bootstrap core JavaScript -->

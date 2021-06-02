@@ -1,4 +1,9 @@
+<?php
+session_start();
+
+?>
 <!DOCTYPE html>
+
 <html lang="en">
 
   <head>
@@ -11,7 +16,7 @@
 
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
-    <title>CDIO</title>
+    <title></title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -67,6 +72,7 @@
                 <li class="nav-item active"><a class="nav-link" href="checkout.php">Checkout</a></li>
 
                 <li class="nav-item"><a class="nav-link" href="contact.php">Contact Us</a></li>
+                <li class="nav-item"><a class="nav-link" href="login.php">Login</a></li>
             </ul>
           </div>
         </div>
@@ -80,287 +86,44 @@
           <div class="col-md-12">
             <div class="text-content">
               <h4>Lorem ipsum dolor sit amet</h4>
-              <h2>Checkout</h2>
+              <h2>Shopping cart</h2>
             </div>
           </div>
         </div>
       </div>
     </div>
+<!--Shoppingcart-->
+</br>
+<?php
+	require_once("connect.php");
+     $sql="select * from product order by Pro_ID";
+     $query = mysqli_query($conn, $sql);
+     if(mysqli_num_rows($query)>0)
+     {
+     while($row = mysqli_fetch_array($query))
+     {
+     echo "<div class='pro'>";
+     echo "<h3>$row[Pro_Name]</h3>";
+     echo "Price:".number_format($row['Price'],3)." USD<br />";
+     echo "<p><a href='addcart.php?item=$row[Pro_ID]'> Mua Sach</a></p>";
+     echo "</div>";
+     }
+     }
+?>
+<?php if (isset($_SESSION['success'])) :?>
+<p class="text-danger"><?= $_SESSION['success'] ?></p>
+<?php endif ; unset($_SESSION['success']); ?>
+</br>
+<a href="listcart.php">List Cart</a>
+ 
+</br>
 
-    <div class="products call-to-action">
-      <div class="container">
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">
-            <div class="row">
-                  <div class="col-6">
-                       <em>Sub-total</em>
-                  </div>
-                  
-                  <div class="col-6 text-right">
-                       <strong>$ 128.00</strong>
-                  </div>
-             </div>
-          </li>
-          
-          <li class="list-group-item">
-               <div class="row">
-                    <div class="col-6">
-                         <em>Extra</em>
-                    </div>
-
-                    <div class="col-6 text-right">
-                         <strong>$ 0.00</strong>
-                    </div>
-               </div>
-          </li>
-
-          <li class="list-group-item">
-               <div class="row">
-                    <div class="col-6">
-                         <em>Tax</em>
-                    </div>
-
-                    <div class="col-6 text-right">
-                         <strong>$ 10.00</strong>
-                    </div>
-               </div>
-          </li>
-
-          <li class="list-group-item">
-               <div class="row">
-                    <div class="col-6">
-                         <em>Total</em>
-                    </div>
-
-                    <div class="col-6 text-right">
-                         <strong>$ 138.00</strong>
-                    </div>
-               </div>
-          </li>
-
-          <li class="list-group-item">
-               <div class="row">
-                    <div class="col-6">
-                         <em>Deposit payment required</em>
-                    </div>
-
-                    <div class="col-6 text-right">
-                         <strong>$ 20.00</strong>
-                    </div>
-               </div>
-          </li>
-        </ul>
-
-        <br>
-        
-        <div class="inner-content">
-          <div class="contact-form">
-              <form action="#">
-                   <div class="row">
-                        <div class="col-sm-6 col-xs-12">
-                             <div class="form-group">
-                                  <label class="control-label">Title:</label>
-                                  <select class="form-control" data-msg-required="This field is required.">
-                                       <option value="">-- Choose --</option>
-                                       <option value="dr">Dr.</option>
-                                       <option value="miss">Miss</option>
-                                       <option value="mr">Mr.</option>
-                                       <option value="mrs">Mrs.</option>
-                                       <option value="ms">Ms.</option>
-                                       <option value="other">Other</option>
-                                       <option value="prof">Prof.</option>
-                                       <option value="rev">Rev.</option>
-                                  </select>
-                             </div>
-                        </div>
-                        <div class="col-sm-6 col-xs-12">
-                             <div class="form-group">
-                                  <label class="control-label">Name:</label>
-                                  <input type="text" class="form-control">
-                             </div>
-                        </div>
-                   </div>
-                   <div class="row">
-                        <div class="col-sm-6 col-xs-12">
-                             <div class="form-group">
-                                  <label class="control-label">Email:</label>
-                                  <input type="text" class="form-control">
-                             </div>
-                        </div>
-                        <div class="col-sm-6 col-xs-12">
-                             <div class="form-group">
-                                  <label class="control-label">Phone:</label>
-                                  <input type="text" class="form-control">
-                             </div>
-                        </div>
-                   </div>
-                   <div class="row">
-                        <div class="col-sm-6 col-xs-12">
-                             <div class="form-group">
-                                  <label class="control-label">Address 1:</label>
-                                  <input type="text" class="form-control">
-                             </div>
-                        </div>
-                        <div class="col-sm-6 col-xs-12">
-                             <div class="form-group">
-                                  <label class="control-label">Address 2:</label>
-                                  <input type="text" class="form-control">
-                             </div>
-                        </div>
-                   </div>
-                   <div class="row">
-                        <div class="col-sm-6 col-xs-12">
-                             <div class="form-group">
-                                  <label class="control-label">City:</label>
-                                  <input type="text" class="form-control">
-                             </div>
-                        </div>
-                        <div class="col-sm-6 col-xs-12">
-                             <div class="form-group">
-                                  <label class="control-label">State:</label>
-                                  <input type="text" class="form-control">
-                             </div>
-                        </div>
-                   </div>
-                   <div class="row">
-                        <div class="col-sm-6 col-xs-12">
-                             <div class="form-group">
-                                  <label class="control-label">Zip:</label>
-                                  <input type="text" class="form-control">
-                             </div>
-                        </div>
-                        <div class="col-sm-6 col-xs-12">
-                             <div class="form-group">
-                                  <label class="control-label">Country:</label>
-                                  <select class="form-control">
-                                       <option value="">-- Choose --</option>
-                                       <option value="">-- Choose --</option>
-                                       <option value="">-- Choose --</option>
-                                       <option value="">-- Choose --</option>
-                                  </select>
-                             </div>
-                        </div>
-                   </div>
-
-                   <div class="row">
-                        <div class="col-sm-6 col-xs-12">
-                             <div class="form-group">
-                                  <label class="control-label">Payment method</label>
-
-                                  <select class="form-control">
-                                       <option value="">-- Choose --</option>
-                                       <option value="bank">Bank account</option>
-                                       <option value="cash">Cash</option>
-                                       <option value="paypal">PayPal</option>
-                                  </select>
-                             </div>
-                        </div>
-
-                        <div class="col-sm-6 col-xs-12">
-                             <div class="form-group">
-                                  <label class="control-label">Captcha</label>
-                                  <input type="text" class="form-control">
-                             </div>
-                        </div>
-                   </div>
-
-                   <div class="form-group">
-                        <label class="control-label">
-                             <input type="checkbox">
-
-                             I agree with the <a href="terms.php" target="_blank">Terms &amp; Conditions</a>
-                        </label>
-                   </div>
-
-                   <div class="clearfix">
-                        <button type="button" class="filled-button pull-left">Back</button>
-                        
-                        <button type="submit" class="filled-button pull-right">Finish</button>
-                   </div>
-              </form>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <footer>
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="inner-content">
-              <p>Copyright © 2020 Company Name - Template by: <a href="https://www.phpjabbers.com/">PHPJabbers.com</a></p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </footer>
-
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Book Now</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <div class="contact-form">
-              <form action="#" id="contact">
-                  <div class="row">
-                       <div class="col-md-6">
-                          <fieldset>
-                            <input type="text" class="form-control" placeholder="Pick-up location" required="">
-                          </fieldset>
-                       </div>
-
-                       <div class="col-md-6">
-                          <fieldset>
-                            <input type="text" class="form-control" placeholder="Return location" required="">
-                          </fieldset>
-                       </div>
-                  </div>
-
-                  <div class="row">
-                       <div class="col-md-6">
-                          <fieldset>
-                            <input type="text" class="form-control" placeholder="Pick-up date/time" required="">
-                          </fieldset>
-                       </div>
-
-                       <div class="col-md-6">
-                          <fieldset>
-                            <input type="text" class="form-control" placeholder="Return date/time" required="">
-                          </fieldset>
-                       </div>
-                  </div>
-                  <input type="text" class="form-control" placeholder="Enter full name" required="">
-
-                  <div class="row">
-                       <div class="col-md-6">
-                          <fieldset>
-                            <input type="text" class="form-control" placeholder="Enter email address" required="">
-                          </fieldset>
-                       </div>
-
-                       <div class="col-md-6">
-                          <fieldset>
-                            <input type="text" class="form-control" placeholder="Enter phone" required="">
-                          </fieldset>
-                       </div>
-                  </div>
-              </form>
-           </div>
-          </div>
+               
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal"><a href="index.php">Cancel</a></button>
             <button type="button" class="btn btn-primary">Book Now</button>
           </div>
-        </div>
-      </div>
-    </div>
-
+       
 
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
