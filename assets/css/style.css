@@ -307,7 +307,7 @@ header .navbar {
 
 .banner-item-02 {
 	padding: 300px 0px;
-	background-image: url(../images/slider-image-2-1920x600.jpg);
+	background-image: url(../images/slider-image-2-1920x600.png);
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center center;
@@ -410,6 +410,9 @@ header .navbar {
 .product-item img {
 	width: 100%;
 	overflow: hidden;
+	height: 20rem;
+	background-size: cover;
+	background-position: center center;
 }
 
 .product-item .down-content h4 {
@@ -564,6 +567,7 @@ header .navbar {
 
 .call-to-action .inner-content .col-md-4 {
 	text-align: right;
+
 }
 
 .call-to-action .inner-content .filled-button {
