@@ -1,6 +1,5 @@
 # CDIO
 SYSTEM FOR SELLING CLOTHERS ONLINE
-<<<<<<< HEAD
 =======
 
 Made by Đặng Quang Trung
