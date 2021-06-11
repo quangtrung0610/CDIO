@@ -24,9 +24,14 @@
                 </li> 
 
                 <li class="nav-item"><a class="nav-link" href="products.php?per_page=9&page=1">Products</a></li>
-
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="products.php?per_page=9&page=1" role="button" aria-haspopup="true" aria-expanded="false">Products</a>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" href="about-us.html">About Us</a>
+                    </div>
+                </li>
                 <li class="nav-item"><a class="nav-link" href="checkout.php">Checkout</a></li>
-
+                
                 <li class="nav-item"><a class="nav-link" href="contact.php">Contact Us</a></li>
 
                 <?php if(isset($_SESSION['Use_Name']) && $_SESSION['Use_Name']): ?>              

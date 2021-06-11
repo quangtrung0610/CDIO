@@ -21,6 +21,10 @@
                 if ($num_rows==0) {
                     echo '<script language="javascript">alert("Username or Password không đúng"); window.location="sign.php";</script>';;
                 }else{
+                    if(session_destroy()){
+                        unlink("cart.txt");
+                    }
+                    session_start();
                     //tiến hành lưu tên đăng nhập vào session để tiện xử lý sau này
                     $_SESSION['Use_Name'] = $Use_Name;
                     // Thực thi hành động sau khi lưu thông tin vào session

@@ -32,13 +32,13 @@
 <body>
 
     <!-- ***** Preloader Start ***** -->
-    <div id="preloader">
+    <!-- <div id="preloader">
         <div class="jumper">
             <div></div>
             <div></div>
             <div></div>
         </div>
-    </div>
+    </div> -->
     <!-- ***** Preloader End ***** -->
 
     <!-- Header -->
@@ -69,7 +69,25 @@
         $street = $_GET['Pro_ID'];
         foreach($conn->query("SELECT * FROM product, images") as $row) :
             if($row['Pro_ID'] == $street && $row['img_ID'] == $street) :
-                include './API/addcart.php';
+                if(isset($_POST["btn_submit"])){
+                    $handle = fopen("cart.txt", "a") or die("Unable to open file!");
+                    
+                    $Pro_Img = $row['img_1'].PHP_EOL;
+                    fwrite($handle, $Pro_Img);
+                    $Pro_Name = $row['Pro_Name'].PHP_EOL;
+                    fwrite($handle, $Pro_Name);
+                    $Price = $row['Price'].PHP_EOL;
+                    fwrite($handle, $Price);
+                    $Size = $_POST['Size'].PHP_EOL;
+                    fwrite($handle, $Size);
+                    $Quantity = $_POST['Quantity'].PHP_EOL;
+                    fwrite($handle, $Quantity);
+                    $Total = ((int)$Price * (int)$Quantity).PHP_EOL;
+                    fwrite($handle, $Total);
+
+                    fclose($handle);
+                }
+
     ?>
     <div class="products">
         <div class="container">
@@ -108,7 +126,7 @@
                         <br>
 
                         <p class="lead">
-                            <strong class="text-primary"><?= number_format($row['Price'], 2, ".", ",")?> VND</strong>
+                            <strong class="text-primary"><?= number_format($row['Price'], 2, ",", ",")?> VND</strong>
                         </p>
 
                         <br>
@@ -124,11 +142,11 @@
                                 <label class="control-label">Size</label>
                                 <div class="form-group">
                                     <select class="form-control" name="Size">
-                                        <option value="0">S</option>
-                                        <option value="1">M</option>
-                                        <option value="2">L</option>
-                                        <option value="3">XL</option>
-                                        <option value="4">XXL</option>
+                                        <option value="S">S</option>
+                                        <option value="M">M</option>
+                                        <option value="L">L</option>
+                                        <option value="XL">XL</option>
+                                        <option value="XXL">XXL</option>
                                     </select>
                                 </div>
                             </div>
@@ -138,15 +156,23 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <input type="text" name="Quantity" class="form-control" placeholder="1">
+                                            <input id="Quantity" type="int" name="Quantity" 
+                                            class="form-control" placeholder="1">
+                                            <script>
+                                                function myfunction(){
+                                                    document.getElementById("Quantity").defaultValue = 1;
+                                                }
+                                            </script>
                                         </div>
                                     </div>
 
                                     <div class="col-sm-6">
-                                        <a  href="checkout.php" 
-                                            class="btn btn-primary btn-block" 
-                                            name = "btn_submit">Add to Cart
-                                        </a>
+                                        <button  href="checkout.php" 
+                                                onclick="myfunction()"
+                                                type="submit"
+                                                class="btn btn-primary btn-block" 
+                                                name = "btn_submit">Add to Cart
+                                        </button>
                                     </div>
                                 </div>
                             </div>

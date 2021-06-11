@@ -1,7 +1,6 @@
 <?php
-if (session_id() === '') {
     session_start();
-}
+
 ?>
 <!DOCTYPE html>
 
@@ -33,13 +32,13 @@ if (session_id() === '') {
 <body>
 
     <!-- ***** Preloader Start ***** -->
-    <div id="preloader">
+    <!-- <div id="preloader">
         <div class="jumper">
             <div></div>
             <div></div>
             <div></div>
         </div>
-    </div>
+    </div> -->
     <!-- ***** Preloader End ***** -->
 
     <!-- Header -->
@@ -65,20 +64,45 @@ if (session_id() === '') {
     </br>
     <div class="row">
     <div class="col col-md-12">
-        <table class="table table-bordered">
+        <table class="table table-bordered" >
             <thead>
                 <tr>
                     <th>IMG</th>
                     <th>Name</th>
-                    <th>Amount</th>
-                    <th>Size</th>
                     <th>Price</th>
+                    <th>Size</th>
+                    <th>Quantity</th>
                     <th>Total</th>
                     <th>Action</th>
                 </tr>
             </thead>
             <tbody id="datarow">
-                
+            <?php
+                require_once('./API/connect.php');
+                if(file_exists("cart.txt")):
+                    $handle = fopen("cart.txt", "r") or die("Unable to open file!");
+                    while(!feof($handle)) :
+                    ?>
+                    <tr>
+                        <td>
+                            <div class="col-sm-4 col-xs-6" style="max-width: 7rem;">
+                                <img src="<?= fgets($handle)?>" alt="" class="img-fluid">
+                            </div>
+                        </div>
+                        </td>
+                        <td><?= fgets($handle)?></td>
+                        <td><?= fgets($handle)?></td>
+                        <td><?= fgets($handle)?></td>
+                        <td><?= fgets($handle)?></td>
+                        <td><?= fgets($handle)?></td>
+                        <td>
+                            <!-- Nút xóa, bấm vào sẽ xóa thông tin dựa vào khóa chính `sp_ma` -->
+                            <a id="delete_1"  class="btn btn-danger btn-delete-sanpham">
+                                <i class="fa fa-trash" aria-hidden="true"></i> Xóa
+                            </a>
+                        </td>
+                    </tr>
+            <?php endwhile; endif;?>
             </tbody>
         </table>
     </br>
