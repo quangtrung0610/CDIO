@@ -1,11 +1,8 @@
 <?php
-if (session_id() === '') {
     session_start();
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
     <meta charset="utf-8">
@@ -65,10 +62,10 @@ if (session_id() === '') {
 
                 <div class="col-md-12">
                     <ul class="pages">
-                        <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
+                    <li><a href="?per_page=9&page=1">1</a></li>
+                    <li><a href="?per_page=9&page=2">2</a></li>
+                    <li><a href="?per_page=9&page=3">3</a></li>
+                    <li><a href="?per_page=9&page=4">4</a></li>
                         <li><a href="#"><i class="fa fa-angle-double-right"></i></a></li>
                     </ul>
                 </div>

@@ -8,7 +8,7 @@
                       <a href="product-details.php?Pro_ID='.$row['Pro_ID'].'"><img src="'.$row['Pro_Img'].'" alt=""></a>
                       <div class="down-content">
                       <a href="product-details.php?Pro_ID='.$row['Pro_ID'].'"><h4>'.$row['Pro_Name'].'</h4></a>
-                      <h6>'.number_format($row['Price'], 2, ".", ",").' VND</h6>
+                      <strong class="text-primary">'.number_format($row['Price'], 2, ".", ",").' VND</strong>
                       </div>
                     </div>
                   </div>';

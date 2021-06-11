@@ -123,7 +123,7 @@ if (session_id() === '') {
                                     <div class="row">
                                         <div class="col-md-8">
                                             <h4>About our office</h4>
-                                            <p style="text-align: justify;">
+                                            <p>
                                             Online clothers selling system with the motto "Accompanying your fashion style" will be a safe and reputable shopping place, 
                                             because we always uphold the criteria of bringing you quality products. with the most affordable prices.
                                             The online clothing sales system mainly only sells online, but always ensures the prestige and quality of the product

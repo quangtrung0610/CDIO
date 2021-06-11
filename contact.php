@@ -45,7 +45,8 @@ if (session_id() === '') {
     ?>
 
     <!-- Page Content -->
-    <div class="page-heading contact-heading header-text" style="background-image: url(assets/images/1.jpg);">
+    <div class="page-heading contact-heading header-text" 
+          style="background-image: url(assets/images/1.jpg);">
       <div class="container">
         <div class="row">
           <div class="col-md-12">

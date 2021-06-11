@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <footer>
+    <footer >
       <div class="container">
         <div class="row">
           <div class="col-md-12">

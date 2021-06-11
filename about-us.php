@@ -46,7 +46,8 @@ if (session_id() === '') {
     ?>
 
     <!-- Page Content -->
-    <<div class="page-heading about-heading header-text" style="background-image: url(assets/images/2.jpg);">
+    <<div class="page-heading about-heading header-text" 
+          style="background-image: url(assets/images/2.jpg);">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
@@ -76,8 +77,13 @@ if (session_id() === '') {
           <div class="col-md-6">
             <div class="left-content">
               <h4>SYSTEM FOR SELLING CLOTHERS ONLINE</h4>
-              <p>Our system proudly offers on-trend styles that cater to both young women and teenagers. The system adheres to the concept of "everyone can enjoy the beauty of fashion". The system can stay on top of the latest fashion trends from around the world and quickly bring these styles to market. So whether you're looking for boho dresses and patterned t-shirts or chic shirts and swimwear, System is the one-stop shop for the modern yet frugal fashionista. Aims to provide high quality and fashionable products at attractive prices to every user in the world.
-</p>
+              <p>Our system proudly offers on-trend styles that cater to both young women and teenagers. 
+              The system adheres to the concept of "everyone can enjoy the beauty of fashion". 
+              The system can stay on top of the latest fashion trends from around the world and quickly bring these styles to market. 
+              So whether you're looking for boho dresses and patterned t-shirts or chic shirts and swimwear, 
+              System is the one-stop shop for the modern yet frugal fashionista. 
+              Aims to provide high quality and fashionable products at attractive prices to every user in the world.
+              </p>
               <ul class="social-icons">
                 <li><a href="https://www.facebook.com/  "><i class="fa fa-facebook"></i></a></li>
                 <li><a href="https://twitter.com/?lang=vi"><i class="fa fa-twitter"></i></a></li>

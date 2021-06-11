@@ -49,7 +49,7 @@ if (session_id() === '') {
 
     <!-- Page Content -->
     <div class="page-heading about-heading header-text"
-        style="background-image: url(assets/images/heading-6-1920x500.jpg);">
+        style="background-image: url(assets/images/headingBack.jpg);">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -63,22 +63,32 @@ if (session_id() === '') {
     </div>
     <!--Shoppingcart-->
     </br>
-    
-    <?php if (isset($_SESSION['success'])) :?>
-    <p class="text-danger"><?= $_SESSION['success'] ?></p>
-    <?php endif ; unset($_SESSION['success']); ?>
+    <div class="row">
+    <div class="col col-md-12">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>IMG</th>
+                    <th>Name</th>
+                    <th>Amount</th>
+                    <th>Size</th>
+                    <th>Price</th>
+                    <th>Total</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="datarow">
+                
+            </tbody>
+        </table>
     </br>
-    <a href="./API/listCart.php">List Cart</a>
-
-    </br>
-
 
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal"><a href="index.php">Cancel</a></button>
-        <button type="button" class="btn btn-primary">Book Now</button>
+        <button type="button" class="btn btn-primary">Buy Now</button>
     </div>
 
-
+    <?php require_once('./API/footer.php');?>
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

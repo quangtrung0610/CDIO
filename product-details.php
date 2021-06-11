@@ -1,7 +1,7 @@
 <?php
-if (session_id() === '') {
-    session_start();
-}
+    if (session_id() === '') {
+        session_start();
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -45,12 +45,10 @@ if (session_id() === '') {
     <?php
       include_once('./API/header.php');
     ?>
-    <?php
-        $street = $_GET['Pro_ID'];
-        printf($street);
-    ?>
+    
     <!-- Page Content -->
-    <div class="page-heading about-heading header-text" style="background-image: url(assets/images/headingBack.jpg);">
+    <div class="page-heading about-heading header-text" 
+        style="background-image: url(assets/images/headingBack.jpg);">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -62,31 +60,47 @@ if (session_id() === '') {
             </div>
         </div>
     </div>
-    
+    <?php
+        $street = $_GET['Pro_ID'];
+        printf($street);
+    ?>
     <?php  
         require_once('./API/connect.php');
         $street = $_GET['Pro_ID'];
-        foreach($conn->query("SELECT * FROM product") as $row) :
-            if($row['Pro_ID'] == $street) :
+        foreach($conn->query("SELECT * FROM product, images") as $row) :
+            if($row['Pro_ID'] == $street && $row['img_ID'] == $street) :
+                include './API/addcart.php';
     ?>
     <div class="products">
         <div class="container">
             <div class="row">
                 <div class="col-md-4 col-xs-12">
                     <div>
-                        <img src="<?= $row['Pro_Img']?>" alt="" class="img-fluid wc-image">
+                        <img src="<?= $row['img_1']?>" alt="" class="img-fluid wc-image">
                     </div>
                     <br>
                     <div class="row">
                         <div class="col-sm-4 col-xs-6">
                             <div>
-                                <img src="img" alt="" class="img-fluid">
+                                <img src="<?= $row['img_2']?>" alt="" class="img-fluid">
+                            </div>
+                            <br>
+                        </div>
+                        <div class="col-sm-4 col-xs-6">
+                            <div>
+                                <img src="<?= $row['img_3']?>" alt="" class="img-fluid">
+                            </div>
+                            <br>
+                        </div>
+                        <div class="col-sm-4 col-xs-6">
+                            <div>
+                                <img src="<?= $row['img_4']?>" alt="" class="img-fluid">
                             </div>
                             <br>
                         </div>
                     </div>
                 </div>
-
+                
                 <div class="col-md-8 col-xs-12">
                     <form action="#" method="post" class="form">
                         <h2><?= $row['Pro_Name']?></h2>
@@ -94,7 +108,7 @@ if (session_id() === '') {
                         <br>
 
                         <p class="lead">
-                            <strong class="text-primary"><?= $row['Price']?></strong>
+                            <strong class="text-primary"><?= number_format($row['Price'], 2, ".", ",")?> VND</strong>
                         </p>
 
                         <br>
@@ -109,7 +123,7 @@ if (session_id() === '') {
                             <div class="col-sm-4">
                                 <label class="control-label">Size</label>
                                 <div class="form-group">
-                                    <select class="form-control">
+                                    <select class="form-control" name="Size">
                                         <option value="0">S</option>
                                         <option value="1">M</option>
                                         <option value="2">L</option>
@@ -124,18 +138,20 @@ if (session_id() === '') {
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="1">
+                                            <input type="text" name="Quantity" class="form-control" placeholder="1">
                                         </div>
                                     </div>
 
                                     <div class="col-sm-6">
-                                        <a href="#" class="btn btn-primary btn-block">Add to Cart</a>
+                                        <a  href="checkout.php" 
+                                            class="btn btn-primary btn-block" 
+                                            name = "btn_submit">Add to Cart
+                                        </a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     <?php
-                        else :
                         endif;
                         endforeach;   
                     ?>
