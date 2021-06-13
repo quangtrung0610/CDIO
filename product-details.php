@@ -32,15 +32,40 @@
 <body>
 
     <!-- ***** Preloader Start ***** -->
-    <!-- <div id="preloader">
+    <div id="preloader">
         <div class="jumper">
             <div></div>
             <div></div>
             <div></div>
         </div>
-    </div> -->
+    </div>
     <!-- ***** Preloader End ***** -->
+ <!-- Messenger Plugin chat Code -->
+ <div id="fb-root"></div>
 
+<!-- Your Plugin chat code -->
+<div id="fb-customer-chat" class="fb-customerchat">
+</div>
+
+<script>
+  var chatbox = document.getElementById('fb-customer-chat');
+  chatbox.setAttribute("page_id", "108926781423496");
+  chatbox.setAttribute("attribution", "biz_inbox");
+  window.fbAsyncInit = function() {
+    FB.init({
+      xfbml            : true,
+      version          : 'v11.0'
+    });
+  };
+
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+</script>
     <!-- Header -->
     <?php
       include_once('./API/header.php');
@@ -60,10 +85,6 @@
             </div>
         </div>
     </div>
-    <?php
-        $street = $_GET['Pro_ID'];
-        printf($street);
-    ?>
     <?php  
         require_once('./API/connect.php');
         $street = $_GET['Pro_ID'];
@@ -94,7 +115,7 @@
             <div class="row">
                 <div class="col-md-4 col-xs-12">
                     <div>
-                        <img src="<?= $row['img_1']?>" alt="" class="img-fluid wc-image">
+                        <img src="<?= $row['img_1']?>" alt="" class="img-fluid wc-image" style="max-width: 21.8rem;">
                     </div>
                     <br>
                     <div class="row">

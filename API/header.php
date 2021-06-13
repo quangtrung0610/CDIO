@@ -15,19 +15,23 @@
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
+          
           <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="index.php">Home
+                    <a class="nav-link active" href="index.php">Home
                       <span class="sr-only">(current)</span>
                     </a>
                 </li> 
-
-                <li class="nav-item"><a class="nav-link" href="products.php?per_page=9&page=1">Products</a></li>
+                <!-- <li class="nav-item"><a class="nav-link" href="products.php?per_page=9&page=1">Products</a></li> -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="products.php?per_page=9&page=1" role="button" aria-haspopup="true" aria-expanded="false">Products</a>
+                    <a class="nav-link dropdown-toggle" href="products.php?per_page=9&page=1" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Products</a>
                     <div class="dropdown-menu">
-                      <a class="dropdown-item" href="about-us.html">About Us</a>
+                      <a class="dropdown-item" href="products.php?per_page=9&page=1&type=all">ALL</a>
+                      <a class="dropdown-item" href="products.php?per_page=9&page=1&type=hoodie">hoodie</a>
+                      <a class="dropdown-item" href="products.php?per_page=9&page=1&type=jacket">jacket</a>
+                      <a class="dropdown-item" href="products.php?per_page=9&page=1&type=pants">pants</a>
+                      <a class="dropdown-item" href="products.php?per_page=9&page=1&type=shirt">shirt</a>
                     </div>
                 </li>
                 <li class="nav-item"><a class="nav-link" href="checkout.php">Checkout</a></li>

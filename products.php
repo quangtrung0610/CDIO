@@ -37,7 +37,32 @@
         </div>
     </div>
     <!-- ***** Preloader End ***** -->
+     <!-- Messenger Plugin chat Code -->
+     <div id="fb-root"></div>
 
+<!-- Your Plugin chat code -->
+<div id="fb-customer-chat" class="fb-customerchat">
+</div>
+
+<script>
+  var chatbox = document.getElementById('fb-customer-chat');
+  chatbox.setAttribute("page_id", "108926781423496");
+  chatbox.setAttribute("attribution", "biz_inbox");
+  window.fbAsyncInit = function() {
+    FB.init({
+      xfbml            : true,
+      version          : 'v11.0'
+    });
+  };
+
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+</script>
     <!-- Header -->
     <?php require('./API/header.php');?>
 
@@ -58,15 +83,30 @@
     <div class="products">
         <div class="container">
             <div class="row">
-                <?php require_once("./API/viewProducts.php"); ?>
+                <?php 
+                $type = $_GET['type'];
+                if($type == "hoodie"){
+                    require_once("./API/viewhoodie.php");
+                }else if($type == "jacket"){
+                    require_once("./API/viewJacket.php"); 
+                }else if($type == "pants"){
+                    require_once("./API/viewPants.php"); 
+                }else if($type == "shirt"){
+                    require_once("./API/viewShirt.php"); 
+                }else {
+                    require_once("./API/viewProducts.php"); 
+                }
+                ?>
 
                 <div class="col-md-12">
                     <ul class="pages">
-                    <li><a href="?per_page=9&page=1">1</a></li>
-                    <li><a href="?per_page=9&page=2">2</a></li>
-                    <li><a href="?per_page=9&page=3">3</a></li>
-                    <li><a href="?per_page=9&page=4">4</a></li>
-                        <li><a href="#"><i class="fa fa-angle-double-right"></i></a></li>
+                    <?php 
+                        $count = 1;
+                        while($count != $totalPages) :?>
+                        <li><a href="?per_page=9&page=<?=$count?>"><?=$count?></a></li>
+                        <?php $count++;?>
+                    <?php endwhile;?>
+                    <li><a href="?per_page=9&page=<?=$totalPages?>"><i class="fa fa-angle-double-right"></i></a></li>
                     </ul>
                 </div>
                 

@@ -6,8 +6,8 @@
     $totalRecords = mysqli_query($conn,"SELECT * FROM product" );
     $totalRecords = $totalRecords->num_rows;
     $totalPages = ceil($totalRecords / $item_per_page);
-        try{
-            foreach($conn->query("SELECT * FROM product limit ".$item_per_page." offset " .$offset) as $row){
+        try{      
+            foreach($conn->query("SELECT * FROM product WHERE Type = 'pants' limit ".$item_per_page." offset " .$offset) as $row){
                 echo '<div class="col-md-4">
                 <div class="product-item">
                     <a href="product-details.php?Pro_ID='.$row['Pro_ID'].'"><img src="'.$row['Pro_Img'].'" alt=""></a>

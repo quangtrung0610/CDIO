@@ -41,7 +41,32 @@ if (session_id() === '') {
     <!-- ***** Preloader End ***** -->
 
     <?php require('./API/header.php');?>
+    <!-- Messenger Plugin chat Code -->
+    <div id="fb-root"></div>
 
+    <!-- Your Plugin chat code -->
+    <div id="fb-customer-chat" class="fb-customerchat">
+    </div>
+
+    <script>
+      var chatbox = document.getElementById('fb-customer-chat');
+      chatbox.setAttribute("page_id", "108926781423496");
+      chatbox.setAttribute("attribution", "biz_inbox");
+      window.fbAsyncInit = function() {
+        FB.init({
+          xfbml            : true,
+          version          : 'v11.0'
+        });
+      };
+
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    </script>
     <!-- Page Content -->
     <!-- Banner Starts Here -->
     <div class="banner header-text">
@@ -74,7 +99,7 @@ if (session_id() === '') {
                 <div class="col-md-12">
                     <div class="section-heading">
                         <h2>Featured Products</h2>
-                        <a href="products.php">view more <i class="fa fa-angle-right"></i></a>
+                        <a href="products.php?per_page=9&page=1">view more <i class="fa fa-angle-right"></i></a>
                     </div>
                 </div>
                 <?php include_once("./API/featuredProducts.php");?>
@@ -150,6 +175,13 @@ if (session_id() === '') {
                 <!-- Additional Scripts -->
                 <script src="assets/js/custom.js"></script>
                 <script src="assets/js/owl.js"></script>
+                <!-- Messenger Plugin chat Code -->
+                <div id="fb-root"></div>
+
+                <!-- Your Plugin chat code -->
+                <div id="fb-customer-chat" class="fb-customerchat">
+                </div>
+
 </body>
 
 </html>
