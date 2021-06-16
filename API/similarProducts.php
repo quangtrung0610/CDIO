@@ -18,4 +18,3 @@
         catch(PDOException $e){
             print "errorr! ".$e->getMessage() . "<\br>";
         }
-?>

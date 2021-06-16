@@ -4,4 +4,3 @@
         unlink("cart.txt");
         header("Location: index.php");
     }
-?>

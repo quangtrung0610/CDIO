@@ -26,5 +26,4 @@
                 echo '<script language="javascript">alert("Có lỗi trong quá trình xử lý"); window.location="sign.php";</script>';
             }
         }
-    }   
-?>
+    }

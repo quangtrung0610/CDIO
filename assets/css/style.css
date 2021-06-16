@@ -289,7 +289,16 @@ header .navbar {
 	font-family: 'FontAwesome';
 }
 
-
+/* avatar */
+img.avatar{ 
+	border-radius: 50%;
+	width: 15rem;
+    height: 15rem;
+	display: block;
+    object-fit: cover;
+	margin-left: auto; 
+	margin-right: auto;
+}
 
 /* Banner Style */
 .banner {
@@ -300,7 +309,7 @@ header .navbar {
 
 .banner-item-01 {
 	padding: 300px 0px;
-	background-image: url(../images/slider-image-1-1920x600.jpg);
+	background-image: url(../images/slider-image-1.jpg);
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center center;
@@ -308,7 +317,7 @@ header .navbar {
 
 .banner-item-02 {
 	padding: 300px 0px;
-	background-image: url(../images/slider-image-2-1920x600.png);
+	background-image: url(../images/slider-image-2.png);
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center center;
@@ -316,7 +325,7 @@ header .navbar {
 
 .banner-item-03 {
 	padding: 300px 0px;
-	background-image: url(../images/slider-image-3-1920x600.jpg);
+	background-image: url(../images/slider-image-3.jpg);
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center center;
@@ -411,9 +420,10 @@ header .navbar {
 .product-item img {
 	width: 100%;
 	overflow: hidden;
-	height: 20rem;
+	height: 25rem;
 	background-size: cover;
 	background-position: center center;
+	object-fit: cover;
 }
 
 .product-item .down-content h4 {

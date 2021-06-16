@@ -11,4 +11,3 @@
     }/*else{
         echo "<script>alert('Database connect success')</script>";
     }*/
-?>
