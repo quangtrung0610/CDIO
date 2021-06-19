@@ -66,8 +66,8 @@
     </script>
     <!-- Page Content -->
     <!-- Banner Starts Here -->
-    <div class="banner header-text">
-        <div class="owl-banner owl-carousel">
+    <div class="banner header-text" >
+        <div class="owl-banner owl-carousel" id="slideshow">
             <div class="banner-item-01">
                 <div class="text-content">
                     <h4>Find your clothers today!</h4>

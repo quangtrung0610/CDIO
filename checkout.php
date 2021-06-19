@@ -78,7 +78,7 @@ session_start();
                 <div class="col-md-12">
                     <div class="text-content">
                         <h4>Welcome everyone with</h4>
-                        <h2>CART</h2>
+                        <h2>SHOPPING CART</h2>
                     </div>
                 </div>
             </div>
@@ -89,88 +89,98 @@ session_start();
     <div class="container">
         <div class="row">
             <div class="col col-md-12">
-                <div class="heading">
-                    <h2>SHOPPING CART</h2>
+                <div class="section-heading">
+                    <h2>Shopping cart</h2>
                 </div>
                 <table class="table table-hover" style="text-align:center;">
-                    <?php 
-                    if(isset($_SESSION["cart_item"])):
+                    <?php
+                    if (isset($_SESSION["cart_item"])) :
                         $total_quantity = 0;
                         $total_price = 0;
                     ?>
-                    <thead>
-                        <tr>
-                            <th>Img</th>
-                            <th>Name</th>
-                            <th>Price</th>
-                            <th>Size</th>
-                            <th>Quantity</th>
-                            <th>Total</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <?php
-                    foreach ($_SESSION["cart_item"] as $item):
-                        $item_price = $item["Quantity"]*$item["Price"];
-                        $total_quantity += $item["Quantity"];
-				        $total_price += $item_price;
-                    ?>
-                    <tbody id="datarow">
+                        <thead>
+                            <tr>
+                                <th>Img</th>
+                                <th>Name</th>
+                                <th>Price</th>
+                                <th>Size</th>
+                                <th>Quantity</th>
+                                <th>Total</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
                         <?php
-                        require_once('./API/connect.php');
-                            //$handle = fopen("cart.txt", "r") or die("Unable to open file!");
-                            $i = 1;
+                        foreach ($_SESSION["cart_item"] as $item) :
+                            $item_price = $item["Quantity"] * $item["Price"];
+                            $total_quantity += $item["Quantity"];
+                            $total_price += $item_price;
                         ?>
-                        <tr>
-                            <td>
-                                <div class="col-sm-4 col-xs-6" style="max-width: 10rem;display: block;margin-left: auto;margin-right: auto;">
-                                    <img src="<?= $item['Pro_Img']?>" alt="" class="img-fluid">
-                                </div>
-                            </td>
-                            <td><?= $item['Pro_Name']?></td>
-                            <td><?=number_format($item['Price'], 0, ".", ",")?> VND</td>
-                            <td><?=$item['Size']?></td>
-                            <td><?= $item['Quantity']?></td>
-                            <td><?=number_format($item_price, 0, ".", ",")?> VND</td>
-                            <td>
-                                <!-- Nút xóa, bấm vào sẽ xóa thông tin dựa vào khóa chính `sp_ma` -->
-                                
-                                <a id="delete_1" name="bnt_delete" href="checkout.php?Pro_ID=<?= $item['Pro_ID']?>" class="btn btn-danger">
-                                    <i class="fa fa-trash" aria-hidden="true"></i> 
-                                </a>
-                            </td>
-                        </tr>
+                            <tbody id="datarow">
+                                <?php
+                                require_once('./API/connect.php');
+                                $i = 1;
+                                ?>
+                                <tr>
+                                    <td>
+                                        <div class="col-sm-4 col-xs-6" style="max-width: 10rem;display: block;margin-left: auto;margin-right: auto;">
+                                            <img src="<?= $item['Pro_Img'] ?>" alt="" class="img-fluid">
+                                        </div>
+                                    </td>
+                                    <td><?= $item['Pro_Name'] ?></td>
+                                    <td><?= number_format($item['Price'], 0, ".", ",") ?> VND</td>
+                                    <td><?= $item['Size'] ?></td>
+                                    <td style="max-width: 5rem;" >
+                                        <input type="number" class="form-control"  value="<?= $item['Quantity'] ?>">
+
+                                    </td>
+                                    <td><?= number_format($item_price, 0, ".", ",") ?> VND</td>
+                                    <td>
+                                        <!-- Nút xóa, bấm vào sẽ xóa thông tin dựa vào khóa chính `sp_ma` -->
+
+                                        <a name="bnt_delete" href="checkout.php?Pro_ID=<?= $item['Pro_ID'] ?>" class="btn btn-outline-dark">
+                                            <i class="fa fa-trash" aria-hidden="true"></i>
+                                        </a>
+                                    </td>
+                                </tr>
                         <?php
                         endforeach;
-                        endif; ?>
+                    endif; ?>
                         <?php
-                        if(!empty($_SESSION["cart_item"])) {
-                            foreach($_SESSION["cart_item"] as $k => $v) {
-                                if($_GET["Pro_ID"] == $_SESSION["cart_item"][$k]['Pro_ID']){
-                                    unset($_SESSION["cart_item"][$k]);				
+                        if (!empty($_SESSION["cart_item"])) {
+                            foreach ($_SESSION["cart_item"] as $k => $v) {
+                                if ($_GET["Pro_ID"] == $_SESSION["cart_item"][$k]['Pro_ID']) {
+                                    unset($_SESSION["cart_item"][$k]);
                                     echo '<script>window.location="checkout.php";</script>';
                                 }
-                                if(empty($_SESSION["cart_item"]))
+                                if (empty($_SESSION["cart_item"]))
                                     unset($_SESSION["cart_item"]);
                             }
                         }
                         ?>
-                    </tbody>
-                    <thead>
-                        <td colspan="5" class="table-active">TOTAL</td>
-                        <td><?=number_format($total_price, 0, ".", ",")?> VND</td>
-                        <td></td>
-                    </thead>
-                </table>
+                            <tr>
+                                <th colspan="5" class="table-active">TOTAL</th>
+                                <th class="table-dark"><?= number_format($total_price, 0, ".", ",") ?> VND</th>
+                                <td class="table-dark"></td>
+                            </tr>
+                            </tbody>
+                        </table>
             </div>
         </div>
         </br>
-        <div class="modal-footer">
-            <a href="index.php" type="button" class="btn btn-danger">Cancel</a>
-            <a type="button" class="btn btn-primary" href="./API/buy.php">Buy Now</a>
-        </div>
+        <form action="" method="post">
+            <div class="modal-footer">
+                <a href="?ac=remove" type="button" class="btn btn-outline-dark" name="bnt_remove">Remove</a>
+                <a type="button" class="btn btn-dark" href="./API/buy.php">Buy Now</a>
+            </div>
+        </form>
+        <?php
+        if($_GET['ac']=='remove'){
+            unset($_SESSION["cart_item"]);
+            echo '<script>window.location="checkout.php";</script>';
+        }
+        ?>
     </div>
-    
+
     <div class="latest-products">
         <div class="container">
             <div class="row">
@@ -184,15 +194,15 @@ session_start();
             </div>
         </div>
     </div>
-        <?php require_once('./API/footer.php'); ?>
-        <!-- Bootstrap core JavaScript -->
-        <script src="vendor/jquery/jquery.min.js"></script>
-        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <?php require_once('./API/footer.php'); ?>
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 
-        <!-- Additional Scripts -->
-        <script src="assets/js/custom.js"></script>
-        <script src="assets/js/owl.js"></script>
+    <!-- Additional Scripts -->
+    <script src="assets/js/custom.js"></script>
+    <script src="assets/js/owl.js"></script>
 </body>
 
 </html>

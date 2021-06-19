@@ -14,8 +14,6 @@
   <header class="">
     <nav class="navbar navbar-expand-lg">
       <div class="container">
-
-
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-left">
             <li class="nav-item <?php
@@ -89,11 +87,14 @@
                 <a class="nav-link dropdown-toggle" href="information.php" drole="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"><?= $_SESSION['Use_Name'] ?></a>
                 <div class="dropdown-menu">
                   <a class="dropdown-item" href="information.php">Information</a>
-                  <a class="dropdown-item" href="logout.php">Logout</a>
+                  <a class="dropdown-item" href="history.php">History</a>
+                  <a class="dropdown-item" href="changePassword.php">Change password</a>
+                  <hr class="dropdown-divider">
+                  <a class="dropdown-item" href="logout.php">Sign-out</a>
                 </div>
               </li>
             <?php else : ?>
-              <li class="nav-item"><a class="nav-link" href="sign.php">SignIn</a></li>
+              <li class="nav-item"><a class="nav-link" href="sign.php">Sign-In</a></li>
             <?php endif; ?>
           </ul>
         </div>

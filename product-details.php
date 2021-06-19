@@ -85,7 +85,6 @@ session_start();
     <?php
     require_once('./API/connect.php');
     $Pro_ID = $_GET['Pro_ID'];
-    $result = $conn->query("SELECT * FROM product");
     foreach ($conn->query("SELECT * FROM product, images") as $row) :
 
         if ($row['Pro_ID'] == $Pro_ID && $row['img_ID'] == $Pro_ID) :
@@ -124,7 +123,7 @@ session_start();
                     <div class="row">
                         <div class="col-md-4 col-xs-12">
                             <div>
-                                <img src="<?= $row['img_1'] ?>" alt="" class="img-fluid wc-image" style="max-width: 21.8rem;">
+                                <img src="<?= $row['img_1'] ?>" alt="" class="img-fluid wc-image">
                             </div>
                             <br>
                             <div class="row">
@@ -156,7 +155,7 @@ session_start();
                                 <br>
 
                                 <p class="lead">
-                                    <strong class="text-primary"><?= number_format($row['Price'], 2, ",", ",") ?> VND</strong>
+                                    <strong class="text-primary"><?= number_format($row['Price'], 0, ",", ",") ?> VND</strong>
                                 </p>
 
                                 <br>
@@ -191,7 +190,8 @@ session_start();
                                             </div>
 
                                             <div class="col-sm-6">
-                                                <button href="checkout.php" onclick="myfunction()" type="submit" class="btn btn-primary btn-block" name="btn_submit">Add to Cart
+                                                <button type="submit" class="btn btn-outline-dark w-100" name="btn_submit">
+                                                    <i class="fa fa-shopping-cart"></i> Add to Cart
                                                 </button>
                                             </div>
                                         </div>

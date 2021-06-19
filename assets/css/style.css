@@ -435,8 +435,9 @@ header .navbar {
 }
 
 .product-item .down-content {
-	padding: 50px;
-	position: relative;
+	width: 100%;
+	padding: 15px;
+    position: relative;
 }
 
 .product-item img {
@@ -450,7 +451,7 @@ header .navbar {
 
 .product-item .down-content h4 {
 	font-size: 17px;
-	color: #1a6692;
+	color: #000000;
 	margin-bottom: 20px;
 }
 

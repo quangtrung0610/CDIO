@@ -8,15 +8,7 @@ $totalRecords = $row['count(Type)'];
 $totalPages = ceil($totalRecords / $item_per_page);
 try {
     foreach ($conn->query("SELECT * FROM product WHERE Type = 'hoodie' limit " . $item_per_page . " offset " . $offset) as $row) {
-        echo '<div class="col-md-4">
-                <div class="product-item">
-                    <a href="product-details.php?Pro_ID=' . $row['Pro_ID'] . '"><img src="' . $row['Pro_Img'] . '" alt=""></a>
-                    <div class="down-content">
-                    <a href="product-details.php?Pro_ID=' . $row['Pro_ID'] . '"><h4>' . $row['Pro_Name'] . '</h4></a>
-                    <strong class="text-primary">' . number_format($row['Price'], 0, ".", ",") . ' VND</strong>
-                    </div>
-                  </div>
-                </div>';
+        require('productCard.php');
     }
 } catch (PDOException $e) {
     print "errorr! " . $e->getMessage() . "<\br>";
@@ -26,6 +18,7 @@ try {
     <ul class="pages">
         <?php
         $count = 1;
+        $active = 'active';
         while ($count != $totalPages) : ?>
             <li class="<?php if($count == $_GET['page']){
                     echo $active;
