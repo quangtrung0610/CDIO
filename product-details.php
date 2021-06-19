@@ -84,43 +84,40 @@ session_start();
     </div>
     <?php
     require_once('./API/connect.php');
-    $street = $_GET['Pro_ID'];
-    $count = 1;
-    printf($count);
+    $Pro_ID = $_GET['Pro_ID'];
+    $result = $conn->query("SELECT * FROM product");
     foreach ($conn->query("SELECT * FROM product, images") as $row) :
-        if ($row['Pro_ID'] == $street && $row['img_ID'] == $street) :
-            if (isset($_POST["btn_submit"])) {
 
-                $handle = fopen("cart.txt", "a") or die("Unable to open file!");
-                if (filesize('cart.txt') == 0) {
-                    $Pro_Img =  $row['img_1'] . PHP_EOL;
-                    fwrite($handle, $Pro_Img);
-                    $Pro_Name = $row['Pro_Name'] . PHP_EOL;
-                    fwrite($handle, $Pro_Name);
-                    $Price = $row['Price'] . PHP_EOL;
-                    fwrite($handle, $Price);
-                    $Size = $_POST['Size'] . PHP_EOL;
-                    fwrite($handle, $Size);
-                    $Quantity = $_POST['Quantity'] . PHP_EOL;
-                    fwrite($handle, $Quantity);
-                    $Total = ((int)$Price * (int)$Quantity);
-                    fwrite($handle, $Total);
+        if ($row['Pro_ID'] == $Pro_ID && $row['img_ID'] == $Pro_ID) :
+
+            if (isset($_POST["btn_submit"])) {
+                $proArray = array(array(
+                    'Pro_ID' => $row['Pro_ID'],
+                    'Pro_Name' => $row['Pro_Name'],
+                    'Price' => $row['Price'],
+                    'Size' => $_POST['Size'],
+                    'Quantity' => $_POST['Quantity'],
+                    'Pro_Img' => $row['Pro_Img']
+                ));
+
+                if (!empty($_SESSION["cart_item"])) {
+
+                    if (in_array($Pro_ID, array_column($_SESSION["cart_item"], 'Pro_ID'))) {
+
+                        foreach ($_SESSION["cart_item"] as $k => $v) {
+                            if ($_SESSION["cart_item"][$k]['Pro_ID'] == $Pro_ID) {
+                                $_SESSION["cart_item"][$k]["Quantity"] += $_POST["Quantity"];
+                            }
+                        }
+                    } else {
+                        $_SESSION["cart_item"] = array_merge($_SESSION["cart_item"], $proArray);
+                    }
                 } else {
-                    $Pro_Img =PHP_EOL . $row['img_1'] . PHP_EOL;
-                    fwrite($handle, $Pro_Img);
-                    $Pro_Name = $row['Pro_Name'] . PHP_EOL;
-                    fwrite($handle, $Pro_Name);
-                    $Price = $row['Price'] . PHP_EOL;
-                    fwrite($handle, $Price);
-                    $Size = $_POST['Size'] . PHP_EOL;
-                    fwrite($handle, $Size);
-                    $Quantity = $_POST['Quantity'] . PHP_EOL;
-                    fwrite($handle, $Quantity);
-                    $Total = ((int)$Price * (int)$Quantity);
-                    fwrite($handle, $Total);
+                    $_SESSION["cart_item"] = $proArray;
                 }
-                fclose($handle);
             }
+
+
     ?>
             <div class="products">
                 <div class="container">
@@ -189,12 +186,7 @@ session_start();
                                         <div class="row">
                                             <div class="col-sm-6">
                                                 <div class="form-group">
-                                                    <input id="Quantity" type="int" name="Quantity" class="form-control" placeholder="1">
-                                                    <script>
-                                                        function myfunction() {
-                                                            document.getElementById("Quantity").defaultValue = 1;
-                                                        }
-                                                    </script>
+                                                    <input id="Quantity" type="int" name="Quantity" class="form-control" placeholder="1" value="1">
                                                 </div>
                                             </div>
 
@@ -205,14 +197,13 @@ session_start();
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                        </div>
                         </form>
                     </div>
                 </div>
             </div>
     <?php
         endif;
-        $i++;
     endforeach; ?>
 
     <div class="latest-products">
@@ -225,16 +216,19 @@ session_start();
                     </div>
                 </div>
                 <?php require_once('./API/similarProducts.php'); ?>
-                <?php require_once('./API/footer.php'); ?>
+            </div>
+        </div>
+    </div>
+    <?php require_once('./API/footer.php'); ?>
 
-                <!-- Bootstrap core JavaScript -->
-                <script src="vendor/jquery/jquery.min.js"></script>
-                <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 
-                <!-- Additional Scripts -->
-                <script src="assets/js/custom.js"></script>
-                <script src="assets/js/owl.js"></script>
+    <!-- Additional Scripts -->
+    <script src="assets/js/custom.js"></script>
+    <script src="assets/js/owl.js"></script>
 
 
 </body>

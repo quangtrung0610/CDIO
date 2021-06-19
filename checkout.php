@@ -93,10 +93,14 @@ session_start();
                     <h2>SHOPPING CART</h2>
                 </div>
                 <table class="table table-hover" style="text-align:center;">
+                    <?php 
+                    if(isset($_SESSION["cart_item"])):
+                        $total_quantity = 0;
+                        $total_price = 0;
+                    ?>
                     <thead>
                         <tr>
-                            <th>#</th>
-                            <th>IMG</th>
+                            <th>Img</th>
                             <th>Name</th>
                             <th>Price</th>
                             <th>Size</th>
@@ -105,36 +109,58 @@ session_start();
                             <th>Action</th>
                         </tr>
                     </thead>
+                    <?php
+                    foreach ($_SESSION["cart_item"] as $item):
+                        $item_price = $item["Quantity"]*$item["Price"];
+                        $total_quantity += $item["Quantity"];
+				        $total_price += $item_price;
+                    ?>
                     <tbody id="datarow">
                         <?php
                         require_once('./API/connect.php');
-                        if (file_exists("cart.txt")) :
-                            $handle = fopen("cart.txt", "r") or die("Unable to open file!");
+                            //$handle = fopen("cart.txt", "r") or die("Unable to open file!");
                             $i = 1;
-                            while (!feof($handle)) : ?>
-                                <tr>
-                                    <td><?= $i?></td>
-                                    <td>
-                                        <div class="col-sm-4 col-xs-6" style="max-width: 10rem;display: block;margin-left: auto;margin-right: auto;">
-                                            <img src="<?= fgets($handle) ?>" alt="" class="img-fluid">
-                                        </div>
-                                    </td>
-                                    <td><?= fgets($handle) ?></td>
-                                    <td><?= fgets($handle) ?></td>
-                                    <td><?= fgets($handle) ?></td>
-                                    <td><?= fgets($handle) ?></td>
-                                    <td><?= fgets($handle) ?></td>
-                                    <td>
-                                        <!-- Nút xóa, bấm vào sẽ xóa thông tin dựa vào khóa chính `sp_ma` -->
-                                        <a id="delete_1" class="btn btn-danger btn-delete-sanpham">
-                                            <i class="fa fa-trash" aria-hidden="true"></i> Xóa
-                                        </a>
-                                    </td>
-                                </tr>
-                        <?php $i++;
-                            endwhile;
+                        ?>
+                        <tr>
+                            <td>
+                                <div class="col-sm-4 col-xs-6" style="max-width: 10rem;display: block;margin-left: auto;margin-right: auto;">
+                                    <img src="<?= $item['Pro_Img']?>" alt="" class="img-fluid">
+                                </div>
+                            </td>
+                            <td><?= $item['Pro_Name']?></td>
+                            <td><?=number_format($item['Price'], 0, ".", ",")?> VND</td>
+                            <td><?=$item['Size']?></td>
+                            <td><?= $item['Quantity']?></td>
+                            <td><?=number_format($item_price, 0, ".", ",")?> VND</td>
+                            <td>
+                                <!-- Nút xóa, bấm vào sẽ xóa thông tin dựa vào khóa chính `sp_ma` -->
+                                
+                                <a id="delete_1" name="bnt_delete" href="checkout.php?Pro_ID=<?= $item['Pro_ID']?>" class="btn btn-danger">
+                                    <i class="fa fa-trash" aria-hidden="true"></i> 
+                                </a>
+                            </td>
+                        </tr>
+                        <?php
+                        endforeach;
                         endif; ?>
+                        <?php
+                        if(!empty($_SESSION["cart_item"])) {
+                            foreach($_SESSION["cart_item"] as $k => $v) {
+                                if($_GET["Pro_ID"] == $_SESSION["cart_item"][$k]['Pro_ID']){
+                                    unset($_SESSION["cart_item"][$k]);				
+                                    echo '<script>window.location="checkout.php";</script>';
+                                }
+                                if(empty($_SESSION["cart_item"]))
+                                    unset($_SESSION["cart_item"]);
+                            }
+                        }
+                        ?>
                     </tbody>
+                    <thead>
+                        <td colspan="5" class="table-active">TOTAL</td>
+                        <td><?=number_format($total_price, 0, ".", ",")?> VND</td>
+                        <td></td>
+                    </thead>
                 </table>
             </div>
         </div>
@@ -143,7 +169,21 @@ session_start();
             <a href="index.php" type="button" class="btn btn-danger">Cancel</a>
             <a type="button" class="btn btn-primary" href="./API/buy.php">Buy Now</a>
         </div>
-
+    </div>
+    
+    <div class="latest-products">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-heading">
+                        <h2>Similar Products</h2>
+                        <a href="products.php">view more <i class="fa fa-angle-right"></i></a>
+                    </div>
+                </div>
+                <?php require_once('./API/similarProducts.php'); ?>
+            </div>
+        </div>
+    </div>
         <?php require_once('./API/footer.php'); ?>
         <!-- Bootstrap core JavaScript -->
         <script src="vendor/jquery/jquery.min.js"></script>

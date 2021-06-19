@@ -14,7 +14,7 @@
       <div class="row">
         <div class="col-md-12">
           <div class="inner-content">
-            <p>Copyright © 2021 Trung - Made by: <a href="">Trung, Dang Quang</a></p>
+            <p>Copyright © 2021 Trung - Made by:<a href="">Trung, Dang Quang</a></p>
           </div>
         </div>
       </div>

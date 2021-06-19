@@ -12,7 +12,8 @@ session_start();
     <meta name="author" content="">
     <link rel="icon" href="./assets/images/male-clothes.ico">
 
-    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap"
+        rel="stylesheet">
 
     <title>trungd3pn.xyz</title>
 
@@ -45,24 +46,24 @@ session_start();
     </div>
 
     <script>
-        var chatbox = document.getElementById('fb-customer-chat');
-        chatbox.setAttribute("page_id", "108926781423496");
-        chatbox.setAttribute("attribution", "biz_inbox");
-        window.fbAsyncInit = function() {
-            FB.init({
-                xfbml: true,
-                version: 'v11.0'
-            });
-        };
+    var chatbox = document.getElementById('fb-customer-chat');
+    chatbox.setAttribute("page_id", "108926781423496");
+    chatbox.setAttribute("attribution", "biz_inbox");
+    window.fbAsyncInit = function() {
+        FB.init({
+            xfbml: true,
+            version: 'v11.0'
+        });
+    };
 
-        (function(d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s);
-            js.id = id;
-            js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
+    (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
     </script>
     <!-- Header -->
     <?php
@@ -121,32 +122,38 @@ session_start();
                                 <div class="row">
                                     <div class="col-lg-12 col-md-12 col-sm-12">
                                         <fieldset>
-                                            <input name="Use_Name" type="text" class="form-control" value="<?= $_SESSION['Use_Name'] ?>" readonly>
+                                            <input name="Use_Name" type="text" class="form-control"
+                                                value="<?= $_SESSION['Use_Name'] ?>" readonly>
                                         </fieldset>
                                     </div>
                                     <div class="col-lg-12 col-md-12 col-sm-12">
                                         <fieldset>
-                                            <input name="Full_Name" type="text" class="form-control" placeholder="Full Name" value="<?= $row['Full_Name'] ?>">
+                                            <input name="Full_Name" type="text" class="form-control"
+                                                placeholder="Full Name" value="<?= $row['Full_Name'] ?>">
                                         </fieldset>
                                     </div>
                                     <div class="col-lg-12 col-md-12 col-sm-12">
                                         <fieldset>
-                                            <input name="Email" type="text" class="form-control" placeholder="E-Mail Address" value="<?= $row['Email'] ?>">
+                                            <input name="Email" type="text" class="form-control"
+                                                placeholder="E-Mail Address" value="<?= $row['Email'] ?>">
                                         </fieldset>
                                     </div>
                                     <div class="col-lg-12 col-md-12 col-sm-12">
                                         <fieldset>
-                                            <input name="Phone_number" type="text" class="form-control" placeholder="Phone number" value="<?= $row['Phone_number'] ?>">
+                                            <input name="Phone_number" type="text" class="form-control"
+                                                placeholder="Phone number" value="<?= $row['Phone_number'] ?>">
                                         </fieldset>
                                     </div>
                                     <div class="col-lg-12">
                                         <fieldset>
-                                            <input name="Address" rows="6" class="form-control" placeholder="Your Address" value="<?= $row['Address'] ?>">
+                                            <input name="Address" rows="6" class="form-control"
+                                                placeholder="Your Address" value="<?= $row['Address'] ?>">
                                         </fieldset>
                                     </div>
                                     <div class="col-lg-12">
                                         <fieldset>
-                                            <button type="submit" name="bnt_update" class="filled-button">Update</button>
+                                            <button type="submit" name="bnt_update"
+                                                class="filled-button">Update</button>
                                         </fieldset>
                                     </div>
                                 </div>
@@ -155,9 +162,13 @@ session_start();
                     </div>
                     <div class="col-md-4">
                         <?php if($row['User_img'] != null): ?>
+                        <div class="imgHover">
                             <img src="assets/images/Avatars/<?= $row['User_img'] ?>" class="avatar">
+                        </div>
                         <?php else :?>
+                        <div class="imgHover">
                             <img src="assets/images/default-avatar.jpg" class="avatar">
+                        </div>
                         <?php endif;?>
                         <h5 class="text-center" style="margin-top: 15px;"><?= $_SESSION['Use_Name'] ?></h5>
                         <br>

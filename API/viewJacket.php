@@ -13,7 +13,7 @@ try {
                     <a href="product-details.php?Pro_ID=' . $row['Pro_ID'] . '"><img src="' . $row['Pro_Img'] . '" alt=""></a>
                     <div class="down-content">
                     <a href="product-details.php?Pro_ID=' . $row['Pro_ID'] . '"><h4>' . $row['Pro_Name'] . '</h4></a>
-                    <strong class="text-primary">' . number_format($row['Price'], 2, ".", ",") . ' VND</strong>
+                    <strong class="text-primary">' . number_format($row['Price'], 0, ".", ",") . ' VND</strong>
                     </div>
                   </div>
                 </div>';

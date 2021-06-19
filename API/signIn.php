@@ -6,10 +6,11 @@ if (isset($_POST["btn_submit"])) {
     // lấy thông tin người dùng
     $Use_Name = $_POST["Use_Name"];
     $PassWord = $_POST["PassWord"];
+    
 
     $sql = "SELECT * FROM user WHERE Use_Name = '$Use_Name' and PassWord = '$PassWord' ";
     $query = mysqli_query($conn, $sql);
-    $Use_ID = mysqli_fetch_array($query);
+    $User = mysqli_fetch_array($query);
     //làm sạch thông tin, xóa bỏ các tag html, ký tự đặc biệt 
     //mà người dùng cố tình thêm vào để tấn công theo phương thức sql injection
     $Use_Name = strip_tags($Use_Name);
@@ -23,16 +24,18 @@ if (isset($_POST["btn_submit"])) {
         if ($num_rows == 0) {
             echo '<script language="javascript">alert("Username or Password không đúng"); window.location="sign.php";</script>';;
         } else {
-            if (session_destroy()) {
-                unlink("cart.txt");
-            }
+            unset($_SESSION['cart_item']);
             session_start();
+            $Type = $User['Type'];
             //tiến hành lưu tên đăng nhập vào session để tiện xử lý sau này
             $_SESSION['Use_Name'] = $Use_Name;
-            $_SESSION['Use_ID'] = $Use_ID['Use_ID'];
-            // Thực thi hành động sau khi lưu thông tin vào session
-            // ở đây mình tiến hành chuyển hướng trang web tới một trang gọi là index.php
-            echo "<script>window.location.href='index.php';</script>";
+            $_SESSION['Use_ID'] = $User['Use_ID'];
+            if($Type === 'admin'){
+                echo "<script>window.location.href='./admin/index.php';</script>";
+            }else{
+                // ở đây mình tiến hành chuyển hướng trang web tới một trang gọi là index.php
+                echo "<script>window.location.href='index.php';</script>";
+            }
         }
     }
 }

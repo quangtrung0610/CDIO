@@ -10,7 +10,7 @@
 
 <body>
   <!-- Header -->
-  <?= error_reporting(0)?>
+  <?php error_reporting(0);?>
   <header class="">
     <nav class="navbar navbar-expand-lg">
       <div class="container">
@@ -68,7 +68,7 @@
                                             $active = '';
                                           }
                                           ?>">
-              <a class="nav-link dropdown-toggle" href="" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">More</a>
+              <a class="nav-link dropdown-toggle" href="contact.php" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">More</a>
               <div class="dropdown-menu">
                 <a class="dropdown-item" href="contact.php">Contact</a>
                 <a class="dropdown-item" href="about-us.php">About us</a>
@@ -86,7 +86,7 @@
                                               $active = '';
                                             }
                                             ?>">
-                <a class="nav-link dropdown-toggle" drole="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"><?= $_SESSION['Use_Name'] ?></a>
+                <a class="nav-link dropdown-toggle" href="information.php" drole="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"><?= $_SESSION['Use_Name'] ?></a>
                 <div class="dropdown-menu">
                   <a class="dropdown-item" href="information.php">Information</a>
                   <a class="dropdown-item" href="logout.php">Logout</a>
