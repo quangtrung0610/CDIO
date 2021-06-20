@@ -76,7 +76,7 @@ session_start();
                 <div class="col-md-12">
                     <div class="text-content">
                         <h4>Welcome everyone with</h4>
-                        <h2>Information</h2>
+                        <h2>Change Password</h2>
                     </div>
                 </div>
             </div>
@@ -91,7 +91,7 @@ session_start();
         $newPassWord = $_POST['newPassWord'];
         $query = "UPDATE user 
                         SET 
-                            PassWord='$newPassWord',
+                            PassWord='$newPassWord'
                         WHERE 
                             Use_Name = '$temp'";
 
@@ -140,7 +140,7 @@ session_start();
 
                                     <div class="col-lg-12">
                                         <fieldset>
-                                            <button type="submit" name="bnt_update" data-toggle="modal" data-target="#exampleModal" class="filled-button">Change</button>
+                                            <button type="submit" name="bnt_update" class="filled-button">Change</button>
                                         </fieldset>
                                     </div>
                                 </div>

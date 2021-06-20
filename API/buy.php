@@ -1,39 +1,41 @@
-<?php 
-        session_start();
+<?php
+session_start();
 ?>
-<?php 
-        require_once("connect.php");  
-           $amout = 0;
-           $Prod_Name = "";
-           $Use_ID = $_SESSION['Use_ID'];
-           
-            $DAY = date("Y-m-d");
-            $url = "../cart.txt";
-            $handle = fopen($url, "r") or die("Unable to open file!");;//mở file ở chế độ đọc
-            while(!feof($handle)) :
+<?php
+require_once("connect.php");
+$Use_ID = $_SESSION['Use_ID'];
+$DAY = date("Y-m-d h:i:sa");
+$Prod_Name = '';
+if (isset($_SESSION["cart_item"])) :
+  $total_quantity = 0;
+  $total_price = 0;
+  //Lấy session cart
+  foreach ($_SESSION["cart_item"] as $item) :
+    $item_price = $item["Quantity"] * $item["Price"];
+    $total_quantity += $item["Quantity"];
+    $total_price += $item_price;
+    //gán biến cho từng mảng session
+    $Pro_Name = $item["Pro_Name"];
+    $Size = $item["Size"];
+    $Quantity = $item["Quantity"];
+    //sp có slg lớn hơn 1 thì cộng chuỗi
+    if ($Quantity >= 1) {
+      $Prod_Name .= $Pro_Name . " - " . $Size . " x " . $Quantity . "<br>";
+    };
 
-            $Pro_IMG = fgets($handle);
-            $Pro_Name = fgets($handle);
-            
-            $Price = fgets($handle);
-            $Size = fgets($handle);
-            $Quantity =fgets($handle);
-            $amout += (int)$Quantity;
-            $Total = (int)fgets($handle) * $Quantity;
-            
-            if($Quantity >=1 ){
-              $Prod_Name .= $Pro_Name." - ".$Size." x ".$Quantity;
-            }
-        endwhile;
-        //$ads = $Prod_Name;
-        //echo ("TEst4-----------------: $ads");
-        $sql = "INSERT INTO bill(Amout,User_ID, Total_Money ,Sale_Day,products) 
-            VALUES ('$amout','$Use_ID','$Total','$DAY','$Prod_Name')";
-        if ($conn->query($sql) === TRUE) {
-          unlink('../cart.txt');
-          echo '<script language="javascript">alert("Thanh Toán Thành Công"); window.location="../checkout.php";</script>';
-          //header("Location:index.php");
-        } else {
-          echo "Error: " . $sql . "<br>" . $conn->error;
-        }
-?>    
+  endforeach;
+endif;
+
+$sql = "INSERT INTO bill(Amout,User_ID, Total_Money ,Sale_Day,products) 
+            VALUES ('$total_quantity','$Use_ID','$total_price','$DAY','$Prod_Name')";
+if ($conn->query($sql) === TRUE) : 
+  unset($_SESSION["cart_item"]);?>
+
+  <script language="javascript">
+    alert("Thanh Toán Thành Công");
+    window.location = "../checkout.php";
+  </script>
+<?php else :
+  echo "Error: " . $sql . "<br>" . $conn->error;
+endif;
+?>
