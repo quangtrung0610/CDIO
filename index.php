@@ -7,8 +7,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="Website demo buy clothes online">
+    <meta name="author" content="Trung, Dang Quang">
+    <meta name="image" content=" ./assets/images/slider-image-3.jpg">
+    
     <link rel="icon" href="./assets/images/male-clothes.ico">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 

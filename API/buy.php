@@ -5,7 +5,7 @@ session_start();
 require_once("connect.php");
 $Use_ID = $_SESSION['Use_ID'];
 $DAY = date("Y-m-d h:i:sa");
-$Prod_Name = '';
+
 if (isset($_SESSION["cart_item"])) :
   $total_quantity = 0;
   $total_price = 0;
@@ -33,7 +33,7 @@ if ($conn->query($sql) === TRUE) :
 
   <script language="javascript">
     alert("Thanh Toán Thành Công");
-    window.location = "../checkout.php";
+    window.location = "./checkout.php";
   </script>
 <?php else :
   echo "Error: " . $sql . "<br>" . $conn->error;

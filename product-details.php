@@ -101,10 +101,10 @@ session_start();
 
                 if (!empty($_SESSION["cart_item"])) {
 
-                    if (in_array($Pro_ID, array_column($_SESSION["cart_item"], 'Pro_ID'))) {
+                    if (in_array($Pro_ID, array_column($_SESSION["cart_item"], 'Pro_ID')) && in_array($_POST['Size'], array_column($_SESSION["cart_item"], 'Size'))) {
 
                         foreach ($_SESSION["cart_item"] as $k => $v) {
-                            if ($_SESSION["cart_item"][$k]['Pro_ID'] == $Pro_ID) {
+                            if ($_SESSION["cart_item"][$k]['Pro_ID'] == $Pro_ID && $_SESSION["cart_item"][$k]['Size'] == $_POST['Size']) {
                                 $_SESSION["cart_item"][$k]["Quantity"] += $_POST["Quantity"];
                             }
                         }
@@ -185,7 +185,7 @@ session_start();
                                         <div class="row">
                                             <div class="col-sm-6">
                                                 <div class="form-group">
-                                                    <input id="Quantity" type="int" name="Quantity" class="form-control" placeholder="1" value="1">
+                                                    <input id="Quantity" type="number" name="Quantity" class="form-control" placeholder="1" value="1">
                                                 </div>
                                             </div>
 
@@ -197,8 +197,8 @@ session_start();
                                         </div>
                                     </div>
                                 </div>
+                            </form>
                         </div>
-                        </form>
                     </div>
                 </div>
             </div>

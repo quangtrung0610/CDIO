@@ -70,7 +70,9 @@ session_start();
     <?php
     require('./API/header.php');
     ?>
-
+    <script>
+        alert
+    </script>
     <!-- Page Content -->
     <div class="page-heading about-heading header-text" style="background-image: url(assets/images/headingBack.jpg);">
         <div class="container">
@@ -129,8 +131,10 @@ session_start();
                                     <td><?= $item['Pro_Name'] ?></td>
                                     <td><?= number_format($item['Price'], 0, ".", ",") ?> VND</td>
                                     <td><?= $item['Size'] ?></td>
-                                    <td style="max-width: 5rem;" >
-                                        <input type="number" class="form-control"  value="<?= $item['Quantity'] ?>">
+                                    <td style="max-width: 5rem;">
+                                        <form action="" method="post">
+                                            <input type="number" class="form-control" name="quantity" value="<?= $item['Quantity'] ?>">
+                                        </form>
 
                                     </td>
                                     <td><?= number_format($item_price, 0, ".", ",") ?> VND</td>
@@ -142,41 +146,47 @@ session_start();
                                         </a>
                                     </td>
                                 </tr>
-                        <?php
+                            </tbody>
+                    <?php
                         endforeach;
                     endif; ?>
-                        <?php
-                        if (!empty($_SESSION["cart_item"])) {
-                            foreach ($_SESSION["cart_item"] as $k => $v) {
-                                if ($_GET["Pro_ID"] == $_SESSION["cart_item"][$k]['Pro_ID']) {
-                                    unset($_SESSION["cart_item"][$k]);
-                                    echo '<script>window.location="checkout.php";</script>';
-                                }
-                                if (empty($_SESSION["cart_item"]))
-                                    unset($_SESSION["cart_item"]);
+                    <?php
+                    if (!empty($_SESSION["cart_item"])) {
+                        foreach ($_SESSION["cart_item"] as $k => $v) {
+                            if ($_GET["Pro_ID"] == $_SESSION["cart_item"][$k]['Pro_ID']) {
+                                unset($_SESSION["cart_item"][$k]);
+                                echo '<script>window.location="checkout.php";</script>';
                             }
+                            if (empty($_SESSION["cart_item"]))
+                                unset($_SESSION["cart_item"]);
                         }
-                        ?>
-                            <tr>
-                                <th colspan="5" class="table-active">TOTAL</th>
-                                <th class="table-dark"><?= number_format($total_price, 0, ".", ",") ?> VND</th>
-                                <td class="table-dark"></td>
-                            </tr>
-                            </tbody>
-                        </table>
+                    }
+                    ?>
+                    <tfoot>
+                        <tr>
+                            <th colspan="5" class="table-active">TOTAL</th>
+                            <th class="table-dark"><?= number_format($total_price, 0, ".", ",") ?> VND</th>
+                            <td class="table-dark"></td>
+                        </tr>
+
+                    </tfoot>
+                </table>
             </div>
         </div>
         </br>
         <form action="" method="post">
             <div class="modal-footer">
                 <a href="?ac=remove" type="button" class="btn btn-outline-dark" name="bnt_remove">Remove</a>
-                <a type="button" class="btn btn-dark" href="./API/buy.php">Buy Now</a>
+                <a href="?ac=buy" type="button" class="btn btn-dark" name="bnt_buy">Buy Now</a>
             </div>
         </form>
         <?php
-        if($_GET['ac']=='remove'){
+        if ($_GET['ac'] == 'remove') {
             unset($_SESSION["cart_item"]);
             echo '<script>window.location="checkout.php";</script>';
+        }
+        if ($_GET['ac'] == 'buy') {
+            require_once('./API/buy.php');
         }
         ?>
     </div>
